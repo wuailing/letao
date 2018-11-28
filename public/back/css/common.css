@@ -1,6 +1,24 @@
 .body_bg{
   background-color: #222D32;
 }
+
+a:link,
+a:visited,
+a:hover,
+a:active{
+  text-decoration: none;
+}
+
+ul{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+body,html{
+  width: 100%;
+  height: 100%;
+}
 .panel-title{
   height: 40px;
   line-height: 40px;
@@ -9,4 +27,123 @@
 }
 .mt_150{
   margin-top: 150px;
+}
+/* 乐淘侧边栏 */
+.lt_aside{
+  width: 180px;
+  height: 100%;
+  background-color: #222D32;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 999;
+  transition: all 1s;
+}
+.lt_aside.hidemenu{
+  left: -180px;
+}
+.lt_aside .brand{
+  width: 100%;
+  height: 50px;
+  background-color: #367FA9;
+  text-align: center;
+  line-height: 50px;
+  font-size: 25px;
+  
+}
+.lt_aside .brand a{
+  color: #fff;
+}
+.lt_aside .user{
+  padding-top: 30px;
+}
+.lt_aside .user img{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+.lt_aside .user p{
+  height: 40px;
+  line-height: 40px;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+}
+.lt_aside .nav{
+  margin-top: 30px;
+
+}
+
+.lt_aside .nav li a{
+  color: #fff;
+  height: 40px;
+  line-height: 40px;
+  width: 100%;
+  display: block;
+  padding-left: 40px;
+  border-left: 3px solid transparent;
+}
+.lt_aside .nav li a.active{
+  border-left: 3px solid #006699;
+  background-color: #1D1F21;
+}
+.lt_aside .nav li a i {
+  margin-right: 5px;
+}
+.lt_aside .nav li .child{
+  display: none;
+}
+.lt_aside .nav li .child a{
+  padding-left: 60px;
+}
+.lt_main{
+  width: 100%;
+  height: 1000px;
+  /* background-color: pink; */
+  padding-left: 180px;
+  padding-top: 50px;
+  transition: all 1s;
+}
+.lt_main.hidemenu{
+  padding-left: 0px;
+}
+.lt_main .lt_topbar{
+  width: 100%;
+  height: 50px;
+  background-color: #3C8DBC;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-left: 180px;
+  transition: all 1s;
+  z-index: 998;
+}
+.lt_main .lt_topbar.hidemenu{
+  padding-left: 0px;
+}
+.lt_main .lt_topbar .icon_left
+,.lt_main .lt_topbar .icon_right{
+  width: 50px;
+  height: 50px;
+  /* background-color: red; */
+  text-align: center;
+  line-height: 50px;
+}
+.lt_main .lt_topbar i{
+  font-size: 20px;
+  color: #fff;
+}
+.lt_main .breadcrumb{
+  margin-top: 20px;
+}
+.red{
+  color: #A94442;
+}
+.echarts_left,
+.echarts_right{
+  width: 48%;
+  height: 400px;
+  background-color: pink;
 }
