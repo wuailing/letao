@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
   <link rel="stylesheet" href="./css/common.css">
-  
 </head>
 
 <body>
@@ -23,7 +22,7 @@
     <div class="nav">
       <ul>
         <li>
-          <a href="user.html">
+          <a href="user.html" class="active">
             <i class="glyphicon glyphicon-user"></i>
             <span>用户管理</span>
           </a>
@@ -63,10 +62,31 @@
         </li>
         <li class="active">首页</li>
       </ol>
-      
-      <!-- 两个echarts的盒子 -->
-      <div class="echart_left pull-left"></div>
-      <div class="echart_right pull-right"></div>
+
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>序号</th>
+            <th>用户名</th>
+            <th>手机号</th>
+            <th>状态</th>
+            <th>操作</th>
+          </tr>
+
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>12</td>
+            <td>13</td>
+            <td>143</td>
+            <td>
+              <button class="btn btn-danger">禁用</button>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
     </div>
   </div>
 
@@ -92,14 +112,60 @@
     </div>
   </div>
 
-  <script src="./lib/jquery/jquery.min.js"></script>
+  <!-- 准备模板 -->
+  <script type="text/html" id="tmp">
+    {{each list v i}}
+      <tr>
+        <td>{{v.id}}</td>
+        <td>{{v.username}}</td>
+        <td>{{v.mobile}}</td>
+        <td></td>
+        <td>
+          <button class="btn btn-danger">{{state[v.isDelete]}}</button>
+        </td>
+      </tr>
+      
+    {{/each}}
+  </script>
+
+  <script src="./lib/jquery/jquery.js"></script>
   <script src="./lib/bootstrap/js/bootstrap.js"></script>
   <script src="./lib/bootstrap-validator/js/bootstrapValidator.js"></script>
+  <script src="./lib/artTemplate/template-web.js"></script>
   <script src="./lib/nprogress/nprogress.js"></script>
-  <script src="./lib/echarts/echarts.min.js"></script>
-  <script src="./js/common.js"></script>
   <script src="./js/isLogin.js"></script>
-  <script src="./js/index.js"></script>
+  <script src="./js/common.js"></script>
+
+  <script>
+    var state = {
+      0:'启用',
+      1:'禁用'
+    }
+    function render() {
+      $.ajax({
+        type: 'get',
+        url: '/user/queryUser',
+        dataType: "json",
+        data: {
+          page: 1,
+          pageSize: 5
+        },
+        success: function (info) {
+          // console.log(info);
+          var obj = {
+            list: info.rows,
+            state:state
+          }
+          // console.log(obj);
+          var htmlstr = template('tmp', obj);
+          // console.log(htmlstr);
+          $('tbody').html(htmlstr);
+        }
+      })
+    }
+    render();
+
+  </script>
 </body>
 
 </html>
