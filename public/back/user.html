@@ -15,7 +15,7 @@
   <!-- 乐淘侧边栏 -->
   <div class="lt_aside">
     <div class="brand">
-      <a href="#">黑马31期</a> 
+      <a href="#">黑马31期</a>
     </div>
     <div class="user">
       <img src="./images/timg (1).jpg" alt="">
@@ -54,7 +54,7 @@
       <a href="#" class="icon_left pull-left">
         <i class="glyphicon glyphicon-align-justify"></i>
       </a>
-      <a href="#" class="icon_right pull-right" >
+      <a href="#" class="icon_right pull-right">
         <i class="glyphicon glyphicon-log-out"></i>
       </a>
     </div>
@@ -63,8 +63,30 @@
         <li>
           <a href="index.html">管理系统</a>
         </li>
-        <li class="active">首页</li>
+        <li class="active">用户管理</li>
       </ol>
+
+      <!-- 表格 -->
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>序号</th>
+            <th>用户名</th>
+            <th>手机号</th>
+            <th>状态</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 挖了个坑 -->
+        </tbody>
+      </table>
+
+      <!-- 分页 -->
+      <div class="text-right">
+        <ul id="paginator"></ul>
+      </div>
+
     </div>
   </div>
 
@@ -90,11 +112,57 @@
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="editorModel" tabindex="-1">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+        </div>
+        <div class="modal-body">
+          <p class="red">
+            <i class="glyphicon glyphicon-info-sign"></i>
+            <span>你确定要执行此操作吗？</span>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" id="confirmBtn">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 模板引擎 -->
+  <script type="text/html" id="tmp">
+    {{each rows v i }}
+      <tr>
+        <td>{{i + 1 + (page - 1) *　size}}</td>
+        <td>{{v.username}}</td>
+        <td>{{v.mobile}}</td>
+        <!-- 禁用 0 正常 1 -->
+        <td>{{v.isDelete==0? '禁用' : '正常'}}</td>
+        <td  data-id="{{v.id}}">
+          {{if v.isDelete == 0}}
+          <button class="btn btn-success">启用</button>
+          {{else}}
+          <button class="btn btn-danger">禁用</button>
+          {{/if}}
+        </td>
+      </tr>
+    {{/each}}
+  </script>
+
   <script src="./lib/jquery/jquery.js"></script>
   <script src="./lib/bootstrap/js/bootstrap.js"></script>
   <script src="./lib/nprogress/nprogress.js"></script>
+  <script src="./lib/artTemplate/template-web.js"></script>
+  <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
   <script src="./js/common.js"></script>
   <script src="./js/isLogin.js"></script>
+  <script src="./js/user.js"></script>
 </body>
 
 </html>
