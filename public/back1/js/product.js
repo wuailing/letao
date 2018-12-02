@@ -81,13 +81,12 @@ $(function () {
 
       //如果长度超过3，需要将最好一个移除
       if (picAddr.length > 3) {
-        console.log($('#imgBox img:last-of-type'));
+        // console.log($('#imgBox img:last-of-type'));
         $('#imgBox img:last-of-type').remove();
       }
 
       if(picAddr.length === 3){
         $("#form").data('bootstrapValidator').updateStatus('picStatus', 'VALID');
-
       }
 
 

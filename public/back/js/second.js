@@ -120,4 +120,24 @@ $(function () {
     }
   })
 
+  //6.阻止默认跳转
+  $("#form").on('success.form.bv', function (e) {
+    e.preventDefault();
+    //使用ajax提交逻辑
+    $.ajax({
+      type:'post',
+      url:'/category/addSecondCategory',
+      data:$('#form').serialize(),
+      dataType:'json',
+      success:function(info){
+        $('#addModel').modal('hide');
+        currentPage = 1;
+        render();
+        $('#form').data('bootstrapValidator').resetForm(true);
+        $('.drop_txt').text('请选择一级分类');
+        $('#imgBox img').attr('src','./images/none.png');
+      }
+    })
+  });
+
 })
