@@ -1,0 +1,27 @@
+
+.lt_history{
+  padding: 10px;
+}
+.lt_history .lt_title{
+  color: #666;
+  font-size: 12px;
+}
+.lt_content{
+  margin-top: 5px;
+}
+.lt_content ul{
+  border: 1px dashed red;
+}
+.lt_content ul li{
+  border-bottom: 1px dashed red;
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 10px;
+}
+.lt_content ul li i{
+  line-height: 30px;
+}
+.lt_content ul li:last-child{
+  border-bottom: 0px;
+}

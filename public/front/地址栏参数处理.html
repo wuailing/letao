@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //获取地址栏参数
+    var str = location.search; //?name=zs&age=18&des=%E5%B8%85
+    //解码成中文
+    str = decodeURI(str); //"?name=zs&age=18&des=帅"
+    //去掉问号
+    str = str.slice(1); //name=zs&age=18&des=帅
+    //将字符串转成数组,以&号分开
+    var arr = str.split('&');// ["name=zs", "age=18", "des=帅"]
+    var obj = {};
+    //再遍历数组，将数组的每一项，以=分开
+    arr.forEach(function(v,i){
+      // console.log(v);
+      var key = v.split('=')[0];
+      var value = v.split('=')[1];
+      // console.log(value);
+      obj[key] = value;
+    })
+    console.log(obj);
+    
+  </script>
+</body>
+</html>
