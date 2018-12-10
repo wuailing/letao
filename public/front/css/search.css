@@ -22,6 +22,10 @@
 .lt_content ul li i{
   line-height: 30px;
 }
+.lt_content ul li a{
+  display: block;
+  width: 90%;
+}
 .lt_content ul li:last-child{
   border-bottom: 0px;
 }
